@@ -1,7 +1,31 @@
-<div class="container mx-auto">
-  <app-header></app-header>
+<div class="mt-5 flex space-x-4">
+  <div class="w-80">
+    <ul>
+      <li>
+        <a routerLink="/">
+          @if (categoryId === undefined) {
+            <strong>All</strong>
+          } @else {
+            All
+          }
+        </a>
+      </li>
 
-  <div class="mt-5 grid grid-cols-4 gap-8">
+      @for (category of categories(); track category.id) {
+        <li>
+          <a routerLink="/" [queryParams]="{ categoryId: category.id }">
+            @if (categoryId === category.id.toString()) {
+              <strong>{{ category.name }}</strong>
+            } @else {
+              {{ category.name }}
+            }
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+
+  <div class="grid w-full grid-cols-4 gap-8">
     @for (product of products(); track $index) {
       <app-product [product]="product" (addToCard)="addToCard($event)" />
     }

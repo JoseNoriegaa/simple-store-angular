@@ -1,6 +1,7 @@
 // External dependencies
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLinkActive, RouterLinkWithHref } from '@angular/router';
 
 import { CartComponent } from '../cart/cart.component';
 import { CartService } from '../../services/cart.service';
@@ -8,7 +9,7 @@ import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule, CartComponent],
+  imports: [CommonModule, CartComponent, RouterLinkWithHref, RouterLinkActive],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
